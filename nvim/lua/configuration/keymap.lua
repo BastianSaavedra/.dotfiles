@@ -40,6 +40,9 @@ keymap("n", "<Leader>w", ":w<CR>", { desc = "Save file"})
 -- NvimTree
 keymap("n", "<Leader>n", ":NvimTreeToggle<CR>", { noremap = true, silent = true, desc = "Open NvimTree" })
 
+-- Markdown preview
+keymap("n", "<M-m>", ":MarkdownPreview<CR>", { noremap = true, silent = true, desc = "Markdown Preview" })
+
 -- Close current buffer
 keymap("n", "<leader>bd", ":bd<CR>", { desc = "Close current Buffer"})
 

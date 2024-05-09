@@ -11,7 +11,7 @@ return {
             "astro", "bash", "css","graphql", "html", "htmldjango", "http",
             "javascript", "json", "lua", "luadoc", "markdown",
             "markdown_inline", "php", "python", "sql",
-            "typescript", "yaml", "xml"
+            "typescript", "tsx", "yaml", "xml"
         },
         highlight = {
             enable = true,
@@ -20,6 +20,9 @@ return {
             enable = true,
         },
         autopairs = {
+            enable = true,
+        },
+        autotags = {
             enable = true,
         },
         textobjects = {

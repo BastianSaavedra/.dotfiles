@@ -104,11 +104,11 @@ screens = [
         half_circle(group_update, 0),
         icons("󰭽 ", group_update), # nf-fa-cloud_download
         widget.CheckUpdates(
-          background = group_update,
+          distro = 'Arch_checkupdates',
+          update_interval = 900,
           display_format = '{updates}',
-          update_interval = 1800,
-          distro = 'Arch',
           no_update_string = '0',
+          background = group_update,
           execute = 'alacritty -e sudo pacman -Syyu'
         ),
         half_circle(group_update, 1),
