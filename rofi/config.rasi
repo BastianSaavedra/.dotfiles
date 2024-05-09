@@ -1,0 +1,33 @@
+configuration {
+    font: "Envy Code R 13";
+    line-margin: 10;
+
+    display-ssh:    "";
+    display-run:    "";
+    display-drun:   "";
+    display-window: "";
+    display-combi:  "";
+    show-icons:     true;
+    terminal:       "rofi-sensible-terminal";
+    ssh-client:     "ssh";
+    ssh-command:    "{terminal} -e {ssh-client} {host} [-p {port}]";
+    run-command:    "{cmd}";
+    run-list-command: "";
+    run-shell-command: "{terminal} -e {cmd}";
+
+}
+
+
+@theme "~/.config/rofi/themes/nord-rofi-theme/nord.rasi"
+
+listview {
+	lines: 6;
+	columns: 2;
+}
+
+window {
+	width: 40%;
+}
+
+
+

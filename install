@@ -1,2 +1,17 @@
 rm -rf ~/.config/alacritty
 ln -srv alacritty ~/.config
+
+rm -rf ~/.config/nvim
+ln -srv nvim ~/.config
+
+rm -rf ~/.config/qtile
+ln -srv qtile ~/.config
+
+rm -rf ~/.config/ranger
+ln -srv ranger ~/.config
+
+rm -rf ~/.config/rofi
+ln -srv rofi ~/.config
+
+rm -rf ~/.config/fish
+ln -srv fish ~/.config
