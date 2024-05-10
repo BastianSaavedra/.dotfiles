@@ -24,6 +24,12 @@ return {
         },
         autotags = {
             enable = true,
+            enable_rename = true,
+            enable_close = true,
+            filetypes = {
+                "html", "xml", "tsx", "javascript", "javascriptreact",
+                "typescript", "typescriptreact", "astro"
+            }
         },
         textobjects = {
             select = {

@@ -54,7 +54,7 @@ keymap("n", "<S-TAB>", ":bprevious<CR>", { noremap = true, silent = true, desc =
 keymap("n", "<Leader>fl", ":luafile%<CR>", { noremap = true, silent = true, desc = "Restart Lua" })
 
 -- Close Terminal
-keymap("n", "<Esc>", "<C-\\><C-n>", { noremap = true, silent = true, desc = "Close Terminal" })
+keymap("t", "<Esc>", "<C-\\><C-n>", { silent = true,  desc = "Close Terminal" })
 
 -- Quit
 keymap("n", "<leader>q", ":q<CR>", { noremap = true, silent = true, desc = "Quit" })
