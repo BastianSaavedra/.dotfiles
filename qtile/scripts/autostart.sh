@@ -8,10 +8,10 @@ nm-applet &
 
 volumeicon &
 
-cbatticon -u 5 &
+xfce4-power-manager &
 
 nitrogen --restore &
 
 /home/volg/Applications/Pcloud/pcloud &
 
-blueman-adapters &
+blueman-applet &

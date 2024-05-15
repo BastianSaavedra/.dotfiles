@@ -25,6 +25,8 @@ return {
                 vim.lsp.buf.format { async = true }
             end, opts)
         end
+        local capabilities = vim.lsp.protocol.make_client_capabilities()
+        capabilities.textDocument.completion.completionItem.snippetSupport = true
         require("neodev").setup()
         require("lspconfig").astro.setup({
             on_attach = on_attach,
@@ -36,7 +38,23 @@ return {
         })
         require("lspconfig").bashls.setup({ on_attach = on_attach })
         require("lspconfig").cssls.setup({ on_attach = on_attach })
-        require("lspconfig").html.setup({ on_attach = on_attach })
+        -- require("lspconfig").emmet_ls.setup({
+        --     on_attach = on_attach,
+        --     -- capabilities = capabilities,
+        --     filetypes = {
+        --         "astro", "css", "html", "htmldjango",
+        --         "javascript", "javascriptreact", "typescriptreact"
+        --     }
+        -- })
+        require("lspconfig").html.setup({
+            on_attach = on_attach,
+            capabilities = capabilities,
+            filetypes = {
+                "html", "htmldjango", "javascript", "javascriptreact",
+                "typescriptreact"
+            },
+
+        })
         require("lspconfig").jsonls.setup({ on_attach = on_attach })
         require("lspconfig").lua_ls.setup({
             on_attach = on_attach,
@@ -44,6 +62,12 @@ return {
                 Lua = {
                     telemetry = { enable = false },
                     workspace = { checkThirdParty = false },
+                    diagnostic = {
+                        global = { 'vim' },
+                        undefined_global = false, -- remove this from diag!
+                        missing_parameters = false, -- missing fields
+
+                    }
                 }
             }
         })

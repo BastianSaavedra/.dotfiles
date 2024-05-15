@@ -8,7 +8,12 @@ return {
         "hrsh7th/cmp-git",      -- Da contexto en relacion a git 
         "L3MON4D3/LuaSnip",
         "saadparwaiz1/cmp_luasnip",
+        "lukas-reineke/cmp-under-comparator",
         "windwp/nvim-autopairs", -- Cerrar llaves
+        -- {
+        --     "dcampos/cmp-emmet-vim",
+        --     dependencies = "mattn/emmet-vim"
+        -- }
     },
     event = "VeryLazy",
     main = "configuration.plugins.cmp-config",
