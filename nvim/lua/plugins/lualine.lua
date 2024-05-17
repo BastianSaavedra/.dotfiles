@@ -30,7 +30,7 @@ return {
                     "fileformat",
                     symbols = {
                         unix = '', -- e712
-                        dos = '',  -- e70f 
+                        dos = '',  -- e70f
                         mac = '',  -- e711
                     }
 
@@ -40,11 +40,10 @@ return {
             lualine_y = { "progress" },
             lualine_z = { "location" }
         },
-        winbar = {
-            lualine_b = { "filename" },
-        },
-        inactive_winbar = {
-            lualine_c = { "filename" },
-        },
+        -- winbar = {
+        -- },
+        -- inactive_winbar = {
+        --     lualine_c = { "filename" },
+        -- },
     },
 }

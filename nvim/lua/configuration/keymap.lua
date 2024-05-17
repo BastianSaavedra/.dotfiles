@@ -71,5 +71,3 @@ keymap("i", "jk", "<Esc>", { desc = "Remap Escape"})
 -- Better tabbing
 keymap("v", "<", "<gv", { noremap = true, silent = true, desc = "Better tabbing to Left" })
 keymap("v", ">", ">gv", { noremap = true, silent = true, desc = "Better tabbing to Right" })
-
-
