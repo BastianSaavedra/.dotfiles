@@ -7,6 +7,7 @@ return {
             custom = {
                 "--port=8080",
                 "--no-css-inject",
+                "--browser=google-chrome-stable"
             },
             serverPath = vim.fn.stdpath("data") .. "/live-server/", --default
             open = "folder",                             -- folder|cwd     --default
