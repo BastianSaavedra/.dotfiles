@@ -1,7 +1,7 @@
 local options = {
     backup         = false,
     clipboard      = "unnamedplus",
-    cmdheight      = 1,
+    cmdheight      = 0,
     conceallevel   = 0,
     fileencoding   = "utf-8",
     hlsearch       = true,

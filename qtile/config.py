@@ -3,7 +3,6 @@ import os
 import subprocess
 from libqtile import hook
 
-
 # import settings
 from settings.groups import groups
 from settings.keys import mod, keys

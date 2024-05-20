@@ -1,22 +1,26 @@
 from libqtile import widget, bar
 from libqtile.config import Screen
+from .theme import colors
 import os
 
 ## Themes
-nord = {
-    "background": "2e3440",
-    "foreground": "d8dee9",
-    "black" : "3b4252",
-    "blue" : "81a1c1",
-    "cyan" : "88c0d0",
-    "green" : "a3be8c",
-    "magenta" : "b48ead",
-    "red" : "bf616a",
-    "white" : "e5e9f0",
-    "yellow" : "ebcb8b"
-}
 
-theme = nord
+# nord = {
+#     "background": "2e3440",
+#     "foreground": "d8dee9",
+#     "black" : "3b4252",
+#     "blue" : "81a1c1",
+#     "cyan" : "88c0d0",
+#     "green" : "a3be8c",
+#     "magenta" : "b48ead",
+#     "red" : "bf616a",
+#     "white" : "e5e9f0",
+#     "yellow" : "ebcb8b"
+# }
+#
+
+
+theme = colors
 
 def sep():
     return widget.Sep(
@@ -74,7 +78,7 @@ screens = [
                 ),
                 sep(),
                 icon(
-                    "\uf021 ", 
+                    "\uf021 ",
                     background=theme['background'],
                     foreground=theme["cyan"]
                 ),
@@ -166,5 +170,5 @@ screens = [
         ),
 
     ),
-    
+
 ]
