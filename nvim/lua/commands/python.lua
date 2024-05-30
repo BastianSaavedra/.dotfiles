@@ -14,4 +14,3 @@ vim.api.nvim_create_user_command("Pyapi", function()
 
 	vim.api.nvim_buf_set_lines(buf, -1, -1, true, python_api)
 end, {})
-

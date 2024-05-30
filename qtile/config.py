@@ -12,7 +12,7 @@ from settings.mouse import mouse
 from libqtile.utils import guess_terminal
 
 # terminal = guess_terminal()
-terminal = "alacritty"
+terminal = "kitty"
 
 dgroups_key_binder = None
 dgroups_app_rules = []  # type: list

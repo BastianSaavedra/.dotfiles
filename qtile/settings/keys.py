@@ -4,16 +4,12 @@ from libqtile.command import lazy
 mod = "mod4"
 alt = "mod1"
 
-
 keys = [
 
 
     # Switch between windows
-    Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
-    Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
     Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
     Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
-    Key([mod], "space", lazy.layout.next(), desc="Move window focus to other window"),
 
     # Move windows between left/right columns or move up/down in current stack.
     # Moving out of range in Columns layout will create new column.
@@ -26,7 +22,6 @@ keys = [
     # will be to screen edge - window would shrink.
     Key([mod, "control"], "l", lazy.layout.grow(), desc="Grow window"),
     Key([mod, "control"], "h", lazy.layout.shrink(), desc="Shrink window"),
-    Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
 
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
@@ -44,23 +39,19 @@ keys = [
 
     Key([alt, "control"], "h", lazy.window.move_down()),
 
-
-    ## My Key ##
-
     # Switch focus of monitor
     Key([mod], "period", lazy.next_screen()),
     Key([mod], "comma", lazy.prev_screen()),
 
+    ## My Key ##
+
     # Change Language
-    
-    Key([mod, "shift"], "e", lazy.spawn("setxkbmap latam"), desc="Spanish Language"),
-    Key([mod, "shift"], "i", lazy.spawn("setxkbmap us"), desc="English Language"),
     Key([mod], "space", lazy.widget["keyboardlayout"].next_keyboard(), desc="Next Keyboard Layout"),
 
-    ## Application Keys 
+    ## Application Keys
 
     # Terminal
-    Key([mod], "Return", lazy.spawn("alacritty"), desc="Launch terminal"),
+    Key([mod], "Return", lazy.spawn("kitty"), desc="Launch terminal"),
 
     # Rofi
     Key([mod], "m", lazy.spawn("rofi -show drun"), desc="Open rofi's menu"),
@@ -75,28 +66,20 @@ keys = [
     # File Explorer
     Key([mod], "f", lazy.spawn("thunar"), desc="Open file explorer"),
 
-    # Spotify
-    # Key([alt, "control"], "s", lazy.spawn("spotify-launcher"), desc="Launch Spotify"),
+    # Volumen
+    # Key([], "XF86AudioLowerVolume", lazy.spawn("amixer sset Master 10%-")),
+    # Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer sset Master 10%+")),
+    # Key([], "XF86AudioMute", lazy.spawn("amixer sset Master 1+ toggle")),
 
-    # Discord
-    # Key([alt, "control"], "d", lazy.spawn("discord"), desc="Launch Discord"),
-
-    # Task Manager
-    Key([alt, "control"], "t", lazy.spawn("bashtop"), desc="Launch task manager"),
-
-    # Pick Color
-    Key([alt, "shift"], "p", lazy.spawn("gpick"), desc="Pick color"),
-
-    # Volumen 
-    Key([], "XF86AudioLowerVolume", lazy.spawn("amixer sset Master 10%-")),
-    Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer sset Master 10%+")),
-    Key([], "XF86AudioMute", lazy.spawn("amixer sset Master 1+ toggle")),
+    Key([], "XF86AudioLowerVolume", lazy.spawn("pamixer --decrease 5")),
+    Key([], "XF86AudioRaiseVolume", lazy.spawn("pamixer --increase 5")),
+    Key([], "XF86AudioMute", lazy.spawn("pamixer --toggle-mute")),
 
     # Brightness
     Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl set +10%"), desc="Increase brightness"),
     Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 10%-"), desc="Lower brightness"),
 
-    # Play/Stop Next and Prev 
+    # Play/Stop Next and Prev
     Key([], "XF86AudioPlay", lazy.spawn("playerctl play-pause")),
     Key([], "XF86AudioNext", lazy.spawn("playerctl next")),
     Key([], "XF86AudioPrev", lazy.spawn("playerctl previous")),

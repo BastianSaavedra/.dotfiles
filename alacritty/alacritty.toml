@@ -1,5 +1,5 @@
 import = [
-    "~/.dotfiles/alacritty/themes/kanagawa_wave.toml"
+    "~/.dotfiles/alacritty/themes/tokyonight-storm.toml"
 ]
 
 [font]

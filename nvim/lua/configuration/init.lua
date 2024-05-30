@@ -1,4 +1,4 @@
-require	"configuration.settings"
+require "configuration.settings"
 require "configuration.keymap"
 require "configuration.lazy"
-vim.cmd([[ colorscheme kanagawa ]])
+vim.cmd([[ colorscheme tokyonight-storm ]])

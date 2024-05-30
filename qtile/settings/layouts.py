@@ -1,13 +1,16 @@
 from libqtile import layout
 from libqtile.config import Match
+from .theme import colors
+
+theme = colors
 
 def init_layout_theme():
   return {
     "margin": 7,
     "border_width": 3,
     "border_radius": 5,
-    "border_focus": "#5e81ac",
-    "border_normal": "#4c566a"
+    "border_focus": theme["foreground"] ,
+    "border_normal": theme["background"]
   }
 
 layout_theme = init_layout_theme()
@@ -38,5 +41,5 @@ floating_layout = layout.Floating(
     Match(title="branchdialog"),  # gitk
     Match(title="pinentry"),  # GPG key password entry
   ],
-  border_focus = "#5e81ac",
+  border_focus = theme["background"],
 )

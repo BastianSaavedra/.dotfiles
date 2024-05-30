@@ -3,22 +3,8 @@ from libqtile.config import Screen
 from .theme import colors
 import os
 
-## Themes
-
-# nord = {
-#     "background": "2e3440",
-#     "foreground": "d8dee9",
-#     "black" : "3b4252",
-#     "blue" : "81a1c1",
-#     "cyan" : "88c0d0",
-#     "green" : "a3be8c",
-#     "magenta" : "b48ead",
-#     "red" : "bf616a",
-#     "white" : "e5e9f0",
-#     "yellow" : "ebcb8b"
-# }
-#
-
+terminal = "kitty"
+interface = "wlan0"
 
 theme = colors
 
@@ -29,7 +15,6 @@ def sep():
         background = theme["background"],
         foreground = theme["foreground"]
     )
-
 
 widget_defaults = dict(
     font = "JetBrains Mono Bold",
@@ -67,7 +52,7 @@ screens = [
                     padding_y = 10,
                     this_current_screen_border = theme["blue"],
                     this_screen_border = theme["cyan"],
-                    highlight_method = 'block',
+                    highlight_method = "block",
                     urgent_border = theme["red"],
                 ),
                 sep(),
@@ -82,6 +67,7 @@ screens = [
                     background=theme['background'],
                     foreground=theme["cyan"]
                 ),
+                # Install pacman-contrib for this widget
                 widget.CheckUpdates(
                     distro = "Arch_checkupdates",
                     update_interval = 900,
@@ -89,7 +75,7 @@ screens = [
                     no_update_string = "0",
                     colour_no_updates = theme["cyan"],
                     colour_have_updates = theme["cyan"],
-                    execute = "alacritty -e sudo pacman -Syyu"
+                    execute = f"{terminal} -e sudo pacman -Syyu"
                 ),
                 sep(),
                 icon(
@@ -99,19 +85,19 @@ screens = [
                 ),
                 widget.DF(
                   visible_on_warn = False,
-                  partition = '/home/volg',
-                  format = 'Home {uf}{m} |',
+                  partition = '/home/none',
+                  format = 'home {uf}{m}|',
                   foreground = theme["green"],
                 ),
                 widget.DF(
                   visible_on_warn = False,
                   partition = '/',
-                  format = 'Root {uf}{m}',
+                  format = 'root {uf}{m}',
                   foreground = theme["green"],
                 ),
                 sep(),
                 widget.Net(
-                  interface = 'wlo1',
+                  interface = interface,
                   # prefix = 'M',
                   format = '{interface}: {down:6.2f}{down_suffix:<2}    {up:6.2f}{up_suffix:<2}',
                   use_bits = False,
@@ -128,7 +114,6 @@ screens = [
                   foreground = theme["red"],
                   format="%B %-d, %R"
                 ),
-                sep(),
                 widget.CurrentLayoutIcon(
                     custom_icon_paths = [
                         os.path.expanduser(
@@ -144,8 +129,7 @@ screens = [
                     foreground = theme["yellow"]
                 ),
                 sep(),
-                widget.Systray(
-                    icon_size = 15,
+                widget.Systray( icon_size = 15,
                     background = theme["background"],
                     padding = 5
                 ),
@@ -161,7 +145,15 @@ screens = [
                     foreground = theme["white"],
                     fontsize = 13,
                 ),
-                sep()
+                sep(),
+                widget.CurrentScreen(
+                    background = theme["background"],
+                    active_color = theme["green"],
+                    active_text = " ",
+                    inactive_color = theme["red"],
+                    inactie_text = "󰍹 "
+                ),
+                sep(),
             ],
             23,
             background = theme["background"],

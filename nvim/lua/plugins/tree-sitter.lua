@@ -11,7 +11,7 @@ return {
             "astro", "bash", "css","graphql", "html", "htmldjango", "http",
             "javascript", "json", "lua", "luadoc", "markdown",
             "markdown_inline", "php", "python", "sql",
-            "typescript", "tsx", "yaml", "xml"
+            "typescript", "tsx", "yaml", "xml", "rasi"
         },
         highlight = {
             enable = true,

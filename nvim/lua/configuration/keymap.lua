@@ -19,10 +19,12 @@ vim.g.maplocalleader = " "
 
 -- NORMAL --
 -- Better window navigation
-keymap("n", "<C-j>", "<C-w>j", { noremap = true, silent = true, desc = "Move to Down" })
-keymap("n", "<C-h>", "<C-w>h", { noremap = true, silent = true, desc = "Move to Left" })
-keymap("n", "<C-k>", "<C-w>k", { noremap = true, silent = true, desc = "Move to Up" })
-keymap("n", "<C-l>", "<C-w>l", { noremap = true, silent = true, desc = "Move to Right" })
+local directions = { "j", "h", "k", "l" }
+local movements = { "Down", "Left", "Up", "Right" }
+
+for i, direction in ipairs(directions) do
+    keymap("n", "<C-" .. direction .. ">", "<C-w>" .. direction, { noremap = true, silent = true, desc = "Move to " .. movements[i]})
+end
 
 -- Jump
 keymap("n", "<leader>l", "$", { noremap = true, silent = true, desc = "Jump to Left" })
@@ -45,6 +47,9 @@ keymap("n", "<M-m>", ":MarkdownPreview<CR>", { noremap = true, silent = true, de
 
 -- Close current buffer
 keymap("n", "<leader>bd", ":bd<CR>", { desc = "Close current Buffer"})
+
+-- Clean Search highlight
+keymap("n", "<leader>c", ":nohlsearch", { desc = "Clean Search highlight"})
 
 -- Navigate buffers
 keymap("n", "<TAB>", ":bnext<CR>", { noremap = true, silent = true, desc = "Next Buffer" })

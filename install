@@ -15,3 +15,18 @@ ln -srv rofi ~/.config
 
 rm -rf ~/.config/fish
 ln -srv fish ~/.config
+
+rm -rf ~/.config/omf
+ln -srv omf ~/.config
+
+rm -rf ~/.config/neofetch
+ln -srv neofetch ~/.config
+
+rm -rf ~/.config/kitty
+ln -srv kitty ~/.config
+
+rm -rf ~/.config/picom
+ln -srv picom ~/.config
+
+rm -rf ~/.config/pip
+ln -srv pip ~/.config

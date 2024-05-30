@@ -3,4 +3,4 @@ return {
     event = "InsertEnter",
     lazy = true,
     config = true,
-} 
+}
