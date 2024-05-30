@@ -1,7 +1,7 @@
 -- Commands --
 
 -- Python
-require("commands.python")
+require("commands.py-command")
 
 -- Http
 require("commands.http")

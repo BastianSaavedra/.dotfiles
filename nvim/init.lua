@@ -1,1 +1,2 @@
 require "configuration"
+require "commands"
