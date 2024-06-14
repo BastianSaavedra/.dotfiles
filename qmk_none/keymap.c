@@ -88,8 +88,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                               KC_LGUI, _______,  _______,     _______, _______, KC_RALT
                                           //`--------------------------'  `--------------------------'
-    ),
-};
+   ),
+}
 // clang-format on
 
 #ifdef OLED_ENABLE
@@ -290,7 +290,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
         rgb_matrix_mode_noeeprom(RGB_MATRIX_ALPHAS_MODS);
         rgb_matrix_sethsv_noeeprom(HSV_PURPLE);
         break;
-    case 5:
+    case 3:
         rgb_matrix_mode_noeeprom(RGB_MATRIX_ALPHAS_MODS);
         rgb_matrix_sethsv_noeeprom(HSV_YELLOW);
         break;
@@ -302,7 +302,7 @@ static void print_status_narrow(void) {
 
 
     /* Print current layer */
-    oled_write("LAYER", false);
+    oled_write("None:)", false);
 
     oled_set_cursor(0, 6);
 
@@ -311,28 +311,21 @@ static void print_status_narrow(void) {
             oled_write("Base ", false);
             break;
         case 1:
-            oled_write("Game ", false);
+            oled_write("Lower ", false);
             break;
         case 2:
-            oled_write("Game2", false);
-            break;
-        case 3:
-            oled_write("Lower", false);
-            break;
-        case 4:
             oled_write("Raise", false);
             break;
-        case 5:
-            oled_write("Adj  ", false);
+        case 3:
+            oled_write("Adj", false);
             break;
         default:
             oled_write("Undef", false);
     }
 
-
     /* KEYBOARD PET RENDER START */
 
-    render_luna(0, 13);
+    render_luna(0, 15);
 
     /* KEYBOARD PET RENDER END */
 }
