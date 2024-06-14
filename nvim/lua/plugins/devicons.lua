@@ -2,7 +2,7 @@ return {
     "nvim-tree/nvim-web-devicons",
     config = function ()
         require("nvim-web-devicons").setup {
-            strict = true,
+            -- strict = true,
             override_by_extension = {
                 ["http"] = {
                     icon = "󰖟", -- nf-md-web

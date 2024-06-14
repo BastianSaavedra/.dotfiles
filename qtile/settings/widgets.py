@@ -51,7 +51,7 @@ screens = [
                     padding_x = 5,
                     padding_y = 10,
                     this_current_screen_border = theme["blue"],
-                    this_screen_border = theme["cyan"],
+                    this_screen_border = theme["magenta"],
                     highlight_method = "block",
                     urgent_border = theme["red"],
                 ),
@@ -114,6 +114,7 @@ screens = [
                   foreground = theme["red"],
                   format="%B %-d, %R"
                 ),
+                sep(),
                 widget.CurrentLayoutIcon(
                     custom_icon_paths = [
                         os.path.expanduser(
@@ -151,7 +152,7 @@ screens = [
                     active_color = theme["green"],
                     active_text = " ",
                     inactive_color = theme["red"],
-                    inactie_text = "󰍹 "
+                    inactive_text = "󰍹 "
                 ),
                 sep(),
             ],
@@ -162,5 +163,46 @@ screens = [
         ),
 
     ),
+    Screen(
+        top=bar.Bar(
+            [
+                widget.GroupBox(
+                    active = theme["white"],
+                    inactive = theme["black"],
+                    rounded = False,
+                    fontsize = 15,
+                    border_width = 0,
+                    disable_drag = True,
+                    foreground = theme["foreground"],
+                    background = theme["background"],
+                    other_current_screen_border = theme["black"],
+                    other_screen_border = theme["black"],
+                    margin_x = 0,
+                    margin_y = 3,
+                    padding_x = 5,
+                    padding_y = 10,
+                    this_current_screen_border = theme["blue"],
+                    this_screen_border = theme["magenta"],
+                    highlight_method = "block",
+                    urgent_border = theme["red"],
+                ),
+                sep(),
+                widget.CurrentScreen(
+                    background = theme["background"],
+                    active_color = theme["green"],
+                    active_text = "󰍹 ",
+                    inactive_color = theme["red"],
+                    inactive_text = " "
+                ),
+                sep(),
+
+            ],
+            23,
+            background = theme["background"],
+            opactity = 0.8
+
+        )
+
+    )
 
 ]

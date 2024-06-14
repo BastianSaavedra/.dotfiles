@@ -30,3 +30,6 @@ ln -srv picom ~/.config
 
 rm -rf ~/.config/pip
 ln -srv pip ~/.config
+
+rm -rf ~/qmk_firmware/keyboards/crkbd/keymaps/qmk_none
+ln -srv qmk_none ~/qmk_firmware/keyboards/crkbd/keymaps/

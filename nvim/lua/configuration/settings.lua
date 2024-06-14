@@ -30,7 +30,7 @@ local options = {
     wrap           = false,
     scrolloff      = 8,
     hidden         = true,
-    textwidth      = 80,
+    -- textwidth      = 80,
     colorcolumn    = "81",
 }
 

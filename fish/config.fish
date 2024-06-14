@@ -3,6 +3,7 @@ if status is-interactive
   alias sscrot="scrot ~/Pictures/Screenshots/%b%d::%H%M%S.png"
   set -gx PATH /usr/local/bin $PATH
   alias pyvenv="python3 -m venv"
+  alias pyvenvcloud="python3 -m virtualenv --always-copy venv"
   alias activate="source venv/bin/activate.fish"
   alias token="cat ~/pCloudDrive/Workspace/Utilities/Tokens/git_token.txt | xclip -selection clipboard"
   alias eqtile="nvim ~/.dotfiles/qtile/"

@@ -49,7 +49,10 @@ keymap("n", "<M-m>", ":MarkdownPreview<CR>", { noremap = true, silent = true, de
 keymap("n", "<leader>bd", ":bd<CR>", { desc = "Close current Buffer"})
 
 -- Clean Search highlight
-keymap("n", "<leader>c", ":nohlsearch", { desc = "Clean Search highlight"})
+keymap("n", "<leader>c", ":nohlsearch<CR>", { desc = "Clean Search highlight"})
+
+-- Open Todo Telescope
+keymap("n", "<leader>ft", ":TodoTelescope<CR>", { desc = "Open Telescope to search TODO"})
 
 -- Navigate buffers
 keymap("n", "<TAB>", ":bnext<CR>", { noremap = true, silent = true, desc = "Next Buffer" })
@@ -60,6 +63,7 @@ keymap("n", "<Leader>fl", ":luafile%<CR>", { noremap = true, silent = true, desc
 
 -- Close Terminal
 keymap("t", "<Esc>", "<C-\\><C-n>", { silent = true,  desc = "Close Terminal" })
+keymap("t", "jk", "<C-\\><C-n>", { silent = true,  desc = "Close Terminal" })
 
 -- Quit
 keymap("n", "<leader>q", ":q<CR>", { noremap = true, silent = true, desc = "Quit" })

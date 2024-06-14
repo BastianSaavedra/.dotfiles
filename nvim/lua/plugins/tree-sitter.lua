@@ -1,9 +1,9 @@
+---@diagnostic disable: missing-fields
 return {
     "nvim-treesitter/nvim-treesitter",
     event = "VeryLazy",
     build = ":TSUpdate",
     dependencies = {
-        "windwp/nvim-ts-autotag",
         "nvim-treesitter/nvim-treesitter-textobjects",
     },
     config = function()
@@ -12,19 +12,11 @@ return {
             highlight = { enable = true },
             indent = { enable = true },
             autopairs = { enable = true },
-            autotag = {
-                enable = true,
-                enable_rename = true,
-                enable_close = true,
-                filetypes = {
-                    "html", "xml", "tsx", "javascript", "javascriptreact",
-                    "typescript", "typescriptreact", "astro",
-                },
-            },
             -- Languages parsers
             ensure_installed = {
                 "astro",
                 "bash",
+                "c",
                 "css",
                 "graphql",
                 "html",

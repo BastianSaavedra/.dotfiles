@@ -1,6 +1,7 @@
 from libqtile.config import Key, Group
 from libqtile import qtile
-from libqtile.command import lazy
+# from libqtile.command import lazy
+from libqtile.lazy import lazy
 from .keys import mod, keys
 
 for vt in range(1, 8):

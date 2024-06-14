@@ -1,5 +1,6 @@
 from libqtile.config import Key
-from libqtile.command import lazy
+# from libqtile.command import lazy
+from libqtile.lazy import lazy
 
 mod = "mod4"
 alt = "mod1"
@@ -8,6 +9,8 @@ keys = [
 
 
     # Switch between windows
+    Key([mod], "h", lazy.layout.left(), desc="Move focus left"),
+    Key([mod], "l", lazy.layout.right(), desc="Move focus right"),
     Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
     Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
 
@@ -20,24 +23,29 @@ keys = [
 
     # Grow windows. If current window is on the edge of screen and direction
     # will be to screen edge - window would shrink.
-    Key([mod, "control"], "l", lazy.layout.grow(), desc="Grow window"),
-    Key([mod, "control"], "h", lazy.layout.shrink(), desc="Shrink window"),
+    Key([mod, "control"], "h", lazy.layout.grow_left(), desc="Grow window to the left"),
+    Key([mod, "control"], "l", lazy.layout.grow_right(), desc="Grow window to the right"),
+    Key([mod, "control"], "j", lazy.layout.grow_down(), desc="Grow window to the down"),
+    Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window to the up"),
+
+    # Key([mod, "control"], "h", lazy.layout.grow(), desc="Grow window"),
+    # Key([mod, "control"], "l", lazy.layout.shrink(), desc="Shrink window"),
 
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
-    Key(
-      [mod],
-      "f",
-      lazy.window.toggle_fullscreen(),
-      desc="Toggle fullscreen on the focused window",
-    ),
-    Key([mod], "t", lazy.window.toggle_floating(), desc="Toggle floating on the focused window"),
+    # Key(
+    #   [mod],
+    #   "f",
+    #   lazy.window.toggle_fullscreen(),
+    #   desc="Toggle fullscreen on the focused window",
+    # ),
+    # Key([mod], "t", lazy.window.toggle_floating(), desc="Toggle floating on the focused window"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
 
-    Key([alt, "control"], "h", lazy.window.move_down()),
+    # Key([alt, "control"], "h", lazy.window.move_down()),
 
     # Switch focus of monitor
     Key([mod], "period", lazy.next_screen()),

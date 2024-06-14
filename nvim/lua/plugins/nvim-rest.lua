@@ -6,7 +6,6 @@ return {
         opts = {
             rocks = { "lua-curl", "nvim-nio", "mimetypes", "xml2lua" }
         }
-
     },
     {
         "rest-nvim/rest.nvim",
