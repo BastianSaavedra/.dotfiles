@@ -25,8 +25,8 @@ enum {
     TD_PC,
     TD_COMI,
     TD_SLA,
-    TD_DOT,
-    TD_COMM
+    // TD_DOT,
+    // TD_COMM
 
 };
 
@@ -36,8 +36,8 @@ tap_dance_action_t tap_dance_actions[] = {
     [TD_PC]     = ACTION_TAP_DANCE_DOUBLE(KC_SCLN, LSFT(KC_SCLN)),
     [TD_COMI]   = ACTION_TAP_DANCE_DOUBLE(KC_QUOT, LSFT(KC_QUOT)),
     [TD_SLA]    = ACTION_TAP_DANCE_DOUBLE(KC_SLSH, LSFT(KC_SLSH)),
-    [TD_DOT]    = ACTION_TAP_DANCE_DOUBLE(KC_DOT, LSFT(KC_DOT)),
-    [TD_COMM]   = ACTION_TAP_DANCE_DOUBLE(KC_COMM, LSFT(KC_COMM)),
+    // [TD_DOT]    = ACTION_TAP_DANCE_DOUBLE(KC_DOT, LSFT(KC_DOT)),
+    // [TD_COMM]   = ACTION_TAP_DANCE_DOUBLE(KC_COMM, LSFT(KC_COMM)),
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -48,7 +48,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
         LCTL_T(KC_ESC), KC_A, KC_S,    KC_D,    KC_F,    KC_G,                          KC_H,   KC_J,    KC_K,    KC_L,  TD(TD_PC), TD(TD_COMI),
         //---------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-            KC_LSFT, KC_Z,   KC_X,    KC_C,    KC_V,    KC_B,                           KC_N,   KC_M,    TD(TD_COMM), TD(TD_DOT),  TD(TD_SLA), KC_RSFT,
+            KC_LSFT, KC_Z,   KC_X,    KC_C,    KC_V,    KC_B,                           KC_N,   KC_M, KC_COMM, KC_DOT ,  TD(TD_SLA), KC_RSFT,
         //---------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                                 KC_RALT, MO(1), KC_ENT,     KC_SPC, MO(2), KC_LGUI
                                             //|--------------------------|  |--------------------------|
@@ -89,7 +89,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                               KC_LGUI, _______,  _______,     _______, _______, KC_RALT
                                           //`--------------------------'  `--------------------------'
    ),
-}
+};
 // clang-format on
 
 #ifdef OLED_ENABLE
@@ -283,16 +283,16 @@ layer_state_t layer_state_set_user(layer_state_t state) {
         rgb_matrix_reload_from_eeprom();
         break;
     case 1:
-        rgb_matrix_mode_noeeprom(RGB_MATRIX_ALPHAS_MODS);
-        rgb_matrix_sethsv_noeeprom(HSV_TEAL);
+        // rgb_matrix_mode_noeeprom(RGB_MATRIX_ALPHAS_MODS);
+        rgb_matrix_sethsv_noeeprom(HSV_CYAN);
         break;
     case 2:
-        rgb_matrix_mode_noeeprom(RGB_MATRIX_ALPHAS_MODS);
+        // rgb_matrix_mode_noeeprom(RGB_MATRIX_ALPHAS_MODS);
         rgb_matrix_sethsv_noeeprom(HSV_PURPLE);
         break;
     case 3:
-        rgb_matrix_mode_noeeprom(RGB_MATRIX_ALPHAS_MODS);
-        rgb_matrix_sethsv_noeeprom(HSV_YELLOW);
+        // rgb_matrix_mode_noeeprom(RGB_MATRIX_ALPHAS_MODS);
+        rgb_matrix_sethsv_noeeprom(HSV_BLUE);
         break;
     }
   return state;
@@ -302,30 +302,30 @@ static void print_status_narrow(void) {
 
 
     /* Print current layer */
-    oled_write("None:)", false);
+    oled_write("MODE:", false);
 
-    oled_set_cursor(0, 6);
+    oled_set_cursor(0, 4);
 
     switch (get_highest_layer(layer_state)) {
         case 0:
-            oled_write("Base ", false);
+            oled_write("QWRTY ", false);
             break;
         case 1:
-            oled_write("Lower ", false);
+            oled_write("LOWER", false);
             break;
         case 2:
-            oled_write("Raise", false);
+            oled_write("RAISE", false);
             break;
         case 3:
-            oled_write("Adj", false);
+            oled_write("ADJST", false);
             break;
         default:
-            oled_write("Undef", false);
+            oled_write("UNDEF", false);
     }
 
     /* KEYBOARD PET RENDER START */
 
-    render_luna(0, 15);
+    render_luna(0, 12);
 
     /* KEYBOARD PET RENDER END */
 }
