@@ -23,7 +23,8 @@ local directions = { "j", "h", "k", "l" }
 local movements = { "Down", "Left", "Up", "Right" }
 
 for i, direction in ipairs(directions) do
-    keymap("n", "<C-" .. direction .. ">", "<C-w>" .. direction, { noremap = true, silent = true, desc = "Move to " .. movements[i]})
+    keymap("n", "<C-" .. direction .. ">", "<C-w>" .. direction,
+        { noremap = true, silent = true, desc = "Move to " .. movements[i] })
 end
 
 -- Jump
@@ -37,22 +38,19 @@ keymap("n", "<M-h>", ":vertical resize -2<CR>", { noremap = true, silent = true,
 keymap("n", "<M-l>", ":vertical resize +2<CR>", { noremap = true, silent = true, desc = "Resize to Right" })
 
 -- Save file
-keymap("n", "<Leader>w", ":w<CR>", { desc = "Save file"})
+keymap("n", "<Leader>w", ":w<CR>", { desc = "Save file" })
 
 -- NvimTree
-keymap("n", "<Leader>n", ":NvimTreeToggle<CR>", { noremap = true, silent = true, desc = "Open NvimTree" })
-
--- Markdown preview
-keymap("n", "<M-m>", ":MarkdownPreview<CR>", { noremap = true, silent = true, desc = "Markdown Preview" })
+-- keymap("n", "<Leader>n", ":NvimTreeToggle<CR>", { noremap = true, silent = true, desc = "Open NvimTree" })
 
 -- Close current buffer
-keymap("n", "<leader>bd", ":bd<CR>", { desc = "Close current Buffer"})
+keymap("n", "<leader>bd", ":bd<CR>", { desc = "Close current Buffer" })
 
 -- Clean Search highlight
-keymap("n", "<leader>c", ":nohlsearch<CR>", { desc = "Clean Search highlight"})
+keymap("n", "<leader>c", ":nohlsearch<CR>", { desc = "Clean Search highlight" })
 
 -- Open Todo Telescope
-keymap("n", "<leader>ft", ":TodoTelescope<CR>", { desc = "Open Telescope to search TODO"})
+keymap("n", "<leader>ft", ":TodoTelescope<CR>", { desc = "Open Telescope to search TODO" })
 
 -- Navigate buffers
 keymap("n", "<TAB>", ":bnext<CR>", { noremap = true, silent = true, desc = "Next Buffer" })
@@ -62,18 +60,18 @@ keymap("n", "<S-TAB>", ":bprevious<CR>", { noremap = true, silent = true, desc =
 keymap("n", "<Leader>fl", ":luafile%<CR>", { noremap = true, silent = true, desc = "Restart Lua" })
 
 -- Close Terminal
-keymap("t", "<Esc>", "<C-\\><C-n>", { silent = true,  desc = "Close Terminal" })
-keymap("t", "jk", "<C-\\><C-n>", { silent = true,  desc = "Close Terminal" })
+keymap("t", "<Esc>", "<C-\\><C-n>", { silent = true, desc = "Close Terminal" })
+keymap("t", "jk", "<C-\\><C-n>", { silent = true, desc = "Close Terminal" })
 
 -- Quit
 keymap("n", "<leader>q", ":q<CR>", { noremap = true, silent = true, desc = "Quit" })
 
 -- Remap escape
-keymap("n", "<C-c>", "<Esc>", { desc = "Remap Escape"})
+keymap("n", "<C-c>", "<Esc>", { desc = "Remap Escape" })
 
 
 -- INSERT --
-keymap("i", "jk", "<Esc>", { desc = "Remap Escape"})
+keymap("i", "jk", "<Esc>", { desc = "Remap Escape" })
 
 
 -- VISUAL --
