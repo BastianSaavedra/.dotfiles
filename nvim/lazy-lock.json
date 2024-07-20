@@ -41,6 +41,7 @@
   "nvim-autopairs": { "branch": "master", "commit": "78a4507bb9ffc9b00f11ae0ac48243d00cb9194d" },
   "nvim-cmp": { "branch": "main", "commit": "d818fd0624205b34e14888358037fb6f5dc51234" },
   "nvim-colorizer.lua": { "branch": "master", "commit": "a065833f35a3a7cc3ef137ac88b5381da2ba302e" },
+  "nvim-dbee": { "branch": "master", "commit": "5062efbe5dfa3c0c6a51f5112c671f6625053f39" },
   "nvim-lint": { "branch": "master", "commit": "efc6fc83f0772283e064c53a8f9fb5645bde0bc0" },
   "nvim-lsp-file-operations": { "branch": "master", "commit": "92a673de7ecaa157dd230d0128def10beb56d103" },
   "nvim-lspconfig": { "branch": "master", "commit": "01e08d4bf1c35e5126b2ad5209725e4c552289ab" },
@@ -65,6 +66,10 @@
   "toggleterm.nvim": { "branch": "main", "commit": "48be57eaba817f038d61bbf64d2c597f578c0827" },
   "tokyonight.nvim": { "branch": "main", "commit": "6adfcde66e8af2f22dd5d76060980abd8daa0df8" },
   "trouble.nvim": { "branch": "main", "commit": "bf99ea71a39e322336b7f8be965f86dbf5c65540" },
+  "vim-dadbod": { "branch": "master", "commit": "7888cb7164d69783d3dce4e0283decd26b82538b" },
+  "vim-dadbod-completion": { "branch": "master", "commit": "c3a56c652af9367c5a7b658ed7ed4dc494f430b0" },
+  "vim-dadbod-ui": { "branch": "master", "commit": "954877c3396ad4bf5624fcbe7b5673ac43cd0928" },
+  "vim-dotenv": { "branch": "master", "commit": "5c51cfcf8d87280d6414e03cd6b253eb70ecb800" },
   "vim-fugitive": { "branch": "master", "commit": "8c8cdf4405cb8bdb70dd9812a33bb52363a87dbc" },
   "which-key.nvim": { "branch": "main", "commit": "e8b454fb03e3cab398c894e5d462c84595ee57ca" }
 }
