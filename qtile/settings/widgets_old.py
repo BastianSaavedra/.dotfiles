@@ -1,194 +1,228 @@
-from libqtile import widget, bar
+import os
+
+from libqtile import bar, widget
 from libqtile.config import Screen
-from .theme import themes
+
+from .theme import colors
+
+terminal = "kitty"
+interface = "wlan0"
+
+theme = colors
 
 
+def base(fg="foreground", bg="background"):
+    return {"foreground": theme[fg], "background": theme[bg]}
 
-# color_bar = "#282a36"
-color_bar = "#24283B"
-size_bar = 23
-# system_font = "CaskaydiaCove Nerd Font"
-system_font = "JetBrains Mono Bold"
-widget_font_size = 13
-active_color = "#d8dee9"
-inactive_color = "#4C566A"
-icon_size = 20
-groups_font_size = 15
-fg_color = "#ffffff"
-bg_color = "#24283B"
-dark_color = "#212121"
-light_color = "#5e81ac"
-urgent_color = "#ff5555"
-text1_color = "#5e81ac"
-update_color = "#a68bf0"
-red_interface = "wlo1" 
-group_update = "#b48ead"
-group_color_1 = "#8fbcbb"
-group_color_2 = "#88c0d0"
-group_color_3 = "#81a1c1"
-group_color_4 = "#5e81ac"
-bar_border_color = "#5e81ac"
 
-def separation():
-  return widget.Sep(
-    linewidth = 0,
-    padding = 6,
-    foregroud = fg_color,
-    background = bg_color
-  )
-
-# left half circle (0) right half circle (1)
-def half_circle(vColor, kind):
-  if kind == 0:
-    icon = "" # nf-ple-left_half_circle_thick
-  else:
-    icon = "" # nf-ple-right_half_circle_thick
-  return widget.TextBox(
-    text = icon,
-    fontsize = size_bar,
-    foreground = vColor,
-    background = bg_color,
-    padding = -5
-  )
-
-# text or icon
-def icons(icon, group_color):
-  return widget.TextBox(
-    text = icon,
-    foreground = fg_color,
-    background = group_color,
-    fontsize = icon_size
-  )
-
+def sep():
+    return widget.Sep(
+        **base(),
+        linewidth=0,
+        padding=15,
+    )
 
 
 widget_defaults = dict(
-    font  = system_font,
-    fontsize  = widget_font_size,
-    padding = 1,
+    font="JetBrains Mono Bold",
+    fontsize=13,
+    padding=1,
 )
+
 extension_defaults = widget_defaults.copy()
 
+icon = lambda char, foreground, background: widget.TextBox(
+    font="JetBrains Mono Bold",
+    text=char,
+    background=background,
+    foreground=foreground,
+)
+
 screens = [
-  Screen(
-    top=bar.Bar(
-      [
-        widget.GroupBox(
-          active = active_color,
-          rounded = False,
-          inactive = inactive_color,
-          border_width = 0,
-          disable_drag = True,
-          fontsize = groups_font_size,
-          foreground = fg_color,
-          highlight_method = 'block',
-          margin_x = 0,
-          margin_y = 3,
-          other_current_screen_border = dark_color,
-          other_screen_border = dark_color,
-          padding_x = 5,
-          padding_y = 10,
-          this_current_screen_border = light_color,
-          this_screen_border = light_color,
-          urgent_alert_method = 'block',
-          urgent_border = urgent_color,
+    Screen(
+        top=bar.Bar(
+            [
+                widget.GroupBox(
+                    active=theme["white"],
+                    inactive=theme["black"],
+                    rounded=False,
+                    fontsize=15,
+                    border_width=0,
+                    disable_drag=True,
+                    foreground=theme["foreground"],
+                    background=theme["background"],
+                    other_current_screen_border=theme["black"],
+                    other_screen_border=theme["black"],
+                    margin_x=0,
+                    margin_y=3,
+                    padding_x=5,
+                    padding_y=10,
+                    this_current_screen_border=theme["blue"],
+                    this_screen_border=theme["magenta"],
+                    highlight_method="block",
+                    urgent_border=theme["red"],
+                ),
+                sep(),
+                widget.Prompt(),
+                widget.WindowName(
+                    foreground=theme["blue"],
+                    background=theme["background"],
+                    font="JetBrains Mono Bold",
+                ),
+                sep(),
+                icon(
+                    "\uf021 ", background=theme["background"], foreground=theme["cyan"]
+                ),
+                # Install pacman-contrib for this widget
+                widget.CheckUpdates(
+                    distro="Arch_checkupdates",
+                    update_interval=900,
+                    display_format="{updates}",  # nf-fa-cloud_download
+                    no_update_string="0",
+                    colour_no_updates=theme["cyan"],
+                    colour_have_updates=theme["cyan"],
+                    execute=f"{terminal} -e sudo pacman -Syyu",
+                ),
+                sep(),
+                icon(" ", background=theme["background"], foreground=theme["green"]),
+                widget.DF(
+                    visible_on_warn=False,
+                    partition="/home/none",
+                    format="home {uf}{m}|",
+                    foreground=theme["green"],
+                ),
+                widget.DF(
+                    visible_on_warn=False,
+                    partition="/",
+                    format="root {uf}{m}",
+                    foreground=theme["green"],
+                ),
+                sep(),
+                widget.Net(
+                    interface=interface,
+                    # prefix = 'M',
+                    format="{interface}: {down:6.2f}{down_suffix:<2}    {up:6.2f}{up_suffix:<2}",
+                    use_bits=False,
+                    foreground=theme["magenta"],
+                ),
+                sep(),
+                icon("󰥔 ", background=theme["background"], foreground=theme["red"]),
+                widget.Clock(
+                    background=theme["background"],
+                    foreground=theme["red"],
+                    format="%B %-d, %R",
+                ),
+                sep(),
+                widget.CurrentLayoutIcon(
+                    custom_icon_paths=[
+                        os.path.expanduser("~/.dotfiles/qtile/settings/icons")
+                    ],
+                    background=theme["background"],
+                    scale=0.7,
+                    padding=10,
+                ),
+                widget.CurrentLayout(
+                    background=theme["background"], foreground=theme["yellow"]
+                ),
+                sep(),
+                widget.Systray(icon_size=15, background=theme["background"], padding=5),
+                sep(),
+                icon("󰌌 ", background=theme["background"], foreground=theme["white"]),
+                widget.KeyboardLayout(
+                    configured_keyboards=["us", "latam"],
+                    display_map={"us": "us", "latam": "es"},
+                    foreground=theme["white"],
+                    fontsize=13,
+                ),
+                sep(),
+                widget.CurrentScreen(
+                    background=theme["background"],
+                    active_color=theme["green"],
+                    active_text="󰍹 ",
+                    inactive_color=theme["red"],
+                    inactive_text="󰍹 ",
+                ),
+                sep(),
+            ],
+            23,
+            background=theme["background"],
+            opacity=0.8,
         ),
-        separation(),
-        widget.Prompt(),
-        widget.WindowName(
-          foreground = text1_color,
-          background = bg_color
-        ),
-        separation(),
-
-        # Update group
-        half_circle(group_update, 0),
-        icons("󰭽 ", group_update), # nf-fa-cloud_download
-        widget.CheckUpdates(
-          distro = 'Arch_checkupdates',
-          update_interval = 900,
-          display_format = '{updates}',
-          no_update_string = '0',
-          background = group_update,
-          execute = 'alacritty -e sudo pacman -Syyu'
-        ),
-        half_circle(group_update, 1),
-        separation(),
-
-        # Group 1
-        half_circle(group_color_1, 0),
-        widget.DF(
-          visible_on_warn = False,
-          partition = '/home/volg',
-          format = 'Home {uf}{m} |',
-          foreground = fg_color,
-          background = group_color_1
-        ),
-        widget.DF(
-          visible_on_warn = False,
-          partition = '/',
-          format = 'Root {uf}{m}',
-          foreground = fg_color,
-          background = group_color_1
-        ),
-        half_circle(group_color_1, 1),
-        separation(),
-        # End Group 1
-
-        # Group 2
-        half_circle(group_color_2, 0),
-        # widget.TextBox(
-        #   text = 'wlo1',
-        #   background = group_color_2
-        # ),
-        widget.Net(
-          interface = 'wlo1',
-          # prefix = 'M',
-          format = '{interface}: {down:6.2f}{down_suffix:<2}    {up:6.2f}{up_suffix:<2}',
-          use_bits = False,
-          background = group_color_2
-
-        ),
-        half_circle(group_color_2, 1),
-        separation(),
-        # End Group 2
-        # Gruop 3
-        half_circle(group_color_3, 0),
-        widget.Clock(
-          background = group_color_3,
-          foreground = fg_color,
-          format="%Y/%m/%d %I:%M %p"
-        ),
-        half_circle(group_color_3, 1),
-        separation(),
-        # End Group 3
-
-        # Group 4
-        half_circle(group_color_4, 0),
-        widget.CurrentLayoutIcon(
-          background = group_color_4,
-          scale = 0.7
-        ),
-        widget.CurrentLayout(
-          background = group_color_4,
-        ),
-        half_circle(group_color_4, 1),
-        separation(),
-        # End Group 4
-        widget.Systray(
-            icon_size = icon_size,
-            background = bg_color,
-        ),
-        separation(),
-
-      ],
-
-      size_bar,
-      background = color_bar,
-      border_width = 2,
-      opacity = 0.8,
-      border_color = bar_border_color,
-      reserve = True,
     ),
-  ),
+    Screen(
+        top=bar.Bar(
+            [
+                widget.GroupBox(
+                    active=theme["white"],
+                    inactive=theme["black"],
+                    rounded=False,
+                    fontsize=15,
+                    border_width=0,
+                    disable_drag=True,
+                    foreground=theme["foreground"],
+                    background=theme["background"],
+                    other_current_screen_border=theme["black"],
+                    other_screen_border=theme["black"],
+                    margin_x=0,
+                    margin_y=3,
+                    padding_x=5,
+                    padding_y=10,
+                    this_current_screen_border=theme["blue"],
+                    this_screen_border=theme["magenta"],
+                    highlight_method="block",
+                    urgent_border=theme["red"],
+                ),
+                sep(),
+                widget.CurrentScreen(
+                    background=theme["background"],
+                    active_color=theme["green"],
+                    active_text="󰍹 ",
+                    inactive_color=theme["red"],
+                    inactive_text="󰍹 ",
+                ),
+                sep(),
+            ],
+            23,
+            background=theme["background"],
+            opactity=0.8,
+        )
+    ),
+    Screen(
+        top=bar.Bar(
+            [
+                widget.GroupBox(
+                    active=theme["white"],
+                    inactive=theme["black"],
+                    rounded=False,
+                    fontsize=15,
+                    border_width=0,
+                    disable_drag=True,
+                    foreground=theme["foreground"],
+                    background=theme["background"],
+                    other_current_screen_border=theme["black"],
+                    other_screen_border=theme["black"],
+                    margin_x=0,
+                    margin_y=3,
+                    padding_x=5,
+                    padding_y=10,
+                    this_current_screen_border=theme["blue"],
+                    this_screen_border=theme["magenta"],
+                    highlight_method="block",
+                    urgent_border=theme["red"],
+                ),
+                sep(),
+                widget.CurrentScreen(
+                    background=theme["background"],
+                    active_color=theme["green"],
+                    active_text="󰍹 ",
+                    inactive_color=theme["red"],
+                    inactive_text="󰍹 ",
+                ),
+                sep(),
+            ],
+            23,
+            background=theme["background"],
+            opactity=0.8,
+        )
+    ),
 ]
