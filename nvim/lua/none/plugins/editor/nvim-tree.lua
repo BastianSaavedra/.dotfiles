@@ -41,6 +41,9 @@ return {
 				enable = true,
 				update_cwd = true,
 			},
+			notify = {
+				absolute_path = false,
+			},
 		})
 
 		-- set keymaps

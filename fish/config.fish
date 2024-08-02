@@ -3,10 +3,9 @@ if status is-interactive
     alias sscrot="scrot ~/Pictures/Screenshots/%b%d::%H%M%S.png"
     set -gx PATH /usr/local/bin $PATH
     # python alias
-    alias pyvenv="python3 -m venv"
+    alias pyvenv="python3 ~/.dotfiles/scripts/create_venv.py"
     alias pyvenvcloud="python3 -m virtualenv --always-copy venv"
     alias activate="source venv/bin/activate.fish"
-    alias pyright="cp ~/pCloudDrive/Workspace/Utilities/Python/pyrightconfig.json ."
 
     alias mongodbstart="sudo systemctl start mongodb.service"
     alias mongodbstop="sudo systemctl stop mongodb.service"

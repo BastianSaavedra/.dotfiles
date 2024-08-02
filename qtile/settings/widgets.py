@@ -2,6 +2,7 @@ import os
 
 from libqtile import widget
 
+from .custom_widget import ModdedCapsNumLock
 from .theme import colors
 
 terminal = "kitty"
@@ -72,6 +73,8 @@ def widget_base():
 
 primary_screen_widgets = [
     *widget_base(),
+    ModdedCapsNumLock(foreground=theme["green"]),
+    separator(),
     icon("\uf021 ", background=theme["background"], foreground=theme["cyan"]),
     # Install pacman-contrib for this widget
     widget.CheckUpdates(
@@ -150,6 +153,7 @@ secondary_sreen_widgets = [
         inactive_color=theme["red"],
         inactive_text="󰍹 ",
     ),
+    separator(),
 ]
 
 third_sreen_widgets = [
@@ -161,4 +165,5 @@ third_sreen_widgets = [
         inactive_color=theme["red"],
         inactive_text="󰍹 ",
     ),
+    separator(),
 ]

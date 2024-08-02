@@ -33,3 +33,8 @@ ln -srv pip ~/.config
 
 rm -rf ~/qmk_firmware/keyboards/crkbd/keymaps/qmk_none
 ln -srv qmk_none ~/qmk_firmware/keyboards/crkbd/keymaps/
+
+rm -rf ~/scripts
+
+rm -rf ~/.screenlayout
+ln -srv .screenlayout ~/.screenlayout

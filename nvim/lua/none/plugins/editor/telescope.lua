@@ -19,6 +19,9 @@ return {
 		local trouble = require("trouble")
 		local trouble_telescope = require("trouble.sources.telescope")
 
+		-- notify
+		telescope.load_extension("notify")
+
 		-- Image preview
 		telescope.load_extension("fzf")
 
