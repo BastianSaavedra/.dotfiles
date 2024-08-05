@@ -2,11 +2,13 @@ import os
 
 from libqtile import widget
 
+from scripts.get_interface import get_active_network_interface
+
 from .custom_widget import ModdedCapsNumLock
 from .theme import colors
 
 terminal = "kitty"
-interface = "wlan0"
+interface = get_active_network_interface()
 
 theme = colors
 
