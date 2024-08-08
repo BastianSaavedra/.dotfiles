@@ -1,7 +1,5 @@
 from libqtile import widget
 
-from .theme import colors
-
 
 class ModdedCapsNumLock(widget.CapsNumLockIndicator):
     def poll(self):

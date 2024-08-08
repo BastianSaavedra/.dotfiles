@@ -109,6 +109,7 @@ primary_screen_widgets = [
         format="{interface}: {down:6.2f}{down_suffix:<2}    {up:6.2f}{up_suffix:<2}",
         use_bits=False,
         foreground=theme["magenta"],
+        update_interval=0.5,
     ),
     separator(),
     icon("󰥔 ", background=theme["background"], foreground=theme["red"]),
