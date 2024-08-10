@@ -22,7 +22,7 @@ return {
 		-- notify
 		telescope.load_extension("notify")
 
-		-- Image preview
+		-- fzf
 		telescope.load_extension("fzf")
 
 		-- or create your custom action
@@ -91,6 +91,7 @@ return {
 			{ desc = "Telescope: Find string under cursor in cwd" }
 		)
 		keymap.set("n", "<leader>ft", "<cmd>TodoTelescope<CR>", { desc = "Telescope: Find to-do's" })
+		keymap.set("n", "<leader>fp", "<cmd>Telescope media_files<CR>", { desc = "Telescope: Preview Image" })
 	end,
 	keys = {
 		{

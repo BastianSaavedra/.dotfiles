@@ -13,8 +13,8 @@ from settings.mouse import mouse
 from settings.screens import screens
 from settings.widgets import extension_defaults, widget_defaults
 
-# terminal = guess_terminal()
-terminal = "kitty"
+terminal = guess_terminal()
+# terminal = "kitty"
 
 dgroups_key_binder = None
 dgroups_app_rules = []  # type: list
@@ -38,7 +38,7 @@ wl_input_rules = None
 @hook.subscribe.startup_once
 def autostart():
     home = os.path.expanduser("~")
-    subprocess.Popen(home + "/.config/qtile/scripts/autostart.sh")
+    subprocess.Popen(home + "/.dotfiles/qtile/scripts/autostart.sh")
 
 
 wmname = "LG3D"

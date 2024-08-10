@@ -18,8 +18,7 @@ def status_bar(widgets):
     return bar.Bar(widgets, 23, background=colors["background"], opacity=0.8)
 
 
-screens = [Screen(top=status_bar(primary_screen_widgets))]
-
+screens = []
 xrandr = "xrandr | grep -w 'connected' | cut -d ' ' -f 2 | wc -l"
 
 command = subprocess.run(
@@ -29,6 +28,7 @@ command = subprocess.run(
     stderr=subprocess.PIPE,
 )
 
+primary_screen = Screen(top=status_bar(primary_screen_widgets))
 if command.returncode != 0:
     error = command.stderr.decode("UTF-8")
     logger.error(f"Failed counting monitors using {xrandr}:\n{error}")
@@ -36,6 +36,9 @@ if command.returncode != 0:
 else:
     connected_monitors = int(command.stdout.decode("UTF-8"))
 
-if connected_monitors > 1:
+if connected_monitors == 1:
+    screens.append(primary_screen)
+elif connected_monitors > 1:
     screens.append(Screen(top=status_bar(secondary_sreen_widgets)))
+    screens.append(primary_screen)
     screens.append(Screen(top=status_bar(third_sreen_widgets)))

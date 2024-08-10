@@ -28,13 +28,3 @@ ln -srv kitty ~/.config
 rm -rf ~/.config/picom
 ln -srv picom ~/.config
 
-rm -rf ~/.config/pip
-ln -srv pip ~/.config
-
-rm -rf ~/qmk_firmware/keyboards/crkbd/keymaps/qmk_none
-ln -srv qmk_none ~/qmk_firmware/keyboards/crkbd/keymaps/
-
-rm -rf ~/scripts
-
-rm -rf ~/.screenlayout
-ln -srv .screenlayout ~/.screenlayout

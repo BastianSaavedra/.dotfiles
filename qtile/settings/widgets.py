@@ -8,9 +8,11 @@ from .custom_widget import ModdedCapsNumLock
 from .theme import colors
 
 terminal = "kitty"
+# terminal = "alacritty"
 interface = get_active_network_interface()
-
 theme = colors
+font_icon = "JetBrains Mono"
+font_text = "JetBrains Mono Bold"
 
 
 def base(fg="foreground", bg="background"):
@@ -26,7 +28,7 @@ def separator():
 
 
 widget_defaults = dict(
-    font="JetBrains Mono Bold",
+    font=font_text,
     fontsize=13,
     padding=1,
 )
@@ -34,7 +36,7 @@ widget_defaults = dict(
 extension_defaults = widget_defaults.copy()
 
 icon = lambda char, foreground, background: widget.TextBox(
-    font="JetBrains Mono Bold",
+    font=font_icon,
     text=char,
     background=background,
     foreground=foreground,
@@ -67,7 +69,7 @@ def widget_base():
         widget.WindowName(
             foreground=theme["blue"],
             background=theme["background"],
-            font="JetBrains Mono Bold",
+            font=font_text,
         ),
         separator(),
     ]
@@ -80,7 +82,7 @@ primary_screen_widgets = [
     icon("\uf021 ", background=theme["background"], foreground=theme["cyan"]),
     # Install pacman-contrib for this widget
     widget.CheckUpdates(
-        distro="Arch_checkupdates",
+        distro="Arch",
         update_interval=900,
         display_format="{updates}",  # nf-fa-cloud_download
         no_update_string="0",
@@ -149,6 +151,14 @@ primary_screen_widgets = [
 
 secondary_sreen_widgets = [
     *widget_base(),
+    widget.CurrentLayoutIcon(
+        custom_icon_paths=[os.path.expanduser("~/.dotfiles/qtile/settings/icons")],
+        background=theme["background"],
+        scale=0.7,
+        padding=10,
+    ),
+    widget.CurrentLayout(background=theme["background"], foreground=theme["yellow"]),
+    separator(),
     widget.CurrentScreen(
         background=theme["background"],
         active_color=theme["green"],
@@ -161,6 +171,14 @@ secondary_sreen_widgets = [
 
 third_sreen_widgets = [
     *widget_base(),
+    widget.CurrentLayoutIcon(
+        custom_icon_paths=[os.path.expanduser("~/.dotfiles/qtile/settings/icons")],
+        background=theme["background"],
+        scale=0.7,
+        padding=10,
+    ),
+    widget.CurrentLayout(background=theme["background"], foreground=theme["yellow"]),
+    separator(),
     widget.CurrentScreen(
         background=theme["background"],
         active_color=theme["green"],
