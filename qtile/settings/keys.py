@@ -68,7 +68,6 @@ keys = [
     Key([alt, "shift"], "w", lazy.spawn("rofi -show window"), desc="Open Windows"),
     Key([alt, "shift"], "r", lazy.spawn("rofi -show run"), desc="Run code terminal"),
     Key([alt, "shift"], "f", lazy.spawn("rofi -show filebrowser")),
-    # Browser
     Key([mod], "b", lazy.spawn("firefox"), desc="Launch Browser"),
     # File Explorer
     Key([mod], "f", lazy.spawn("thunar"), desc="Open file explorer"),
