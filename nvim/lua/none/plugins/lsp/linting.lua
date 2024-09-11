@@ -3,6 +3,8 @@ return {
 	event = { "BufReadPre", "BufNewFile" },
 	config = function()
 		local lint = require("lint")
+		local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
+		local eslint = lint.linters.eslint_d
 
 		lint.linters_by_ft = {
 			javascript = { "eslint_d" },
@@ -12,7 +14,30 @@ return {
 			python = { "flake8" },
 		}
 
-		local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
+		eslint.args = {
+			"--no-warn-ignored", -- <== this is the key argument
+			"--format",
+			"json",
+			"--stdin",
+			"--stdin-filename",
+			function()
+				return vim.api.nvim_buf_get_name(0)
+			end,
+		}
+
+		lint.try_lint(nil, { ignore_errors = true })
+
+		lint.linters.eslint_d = require("lint.util").wrap(lint.linters.eslint_d, function(diagnostic)
+			-- try to ignore "No ESLint configuration found" error
+			-- if diagnostic.message:find("Error: no Eslint configuration found") then -- old version
+			if diagnostic.message:find("Error: Could not find config file") then
+				return nil
+			end
+			if diagnostic.message:find("Error running eslint: ENOENT: no such file or directory") then
+				return nil
+			end
+			return diagnostic
+		end)
 
 		vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
 			group = lint_augroup,

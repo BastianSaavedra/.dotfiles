@@ -38,7 +38,7 @@ return {
 				colorscheme = { enable_preview = true },
 			},
 			defaults = {
-				prompt_prefix = " ",
+				prompt_prefix = "󱚟 ",
 				path_display = { "smart" },
 				mappings = {
 					i = {

@@ -1,31 +1,82 @@
+
+
+@theme "~/.dotfiles/rofi/themes/kanagawa.rasi"
 configuration {
+
+    /*---------- General settings ----------*/
     font: "JetBrains Mono Medium 11";
     line-margin: 5;
-
-    display-ssh:    " :";
-    display-run:    " :";
-    display-drun:   " :";
-    display-window: " :";
-    display-combi:  " :";
+    modi:           "drun,run,filebrowser,window";
+    case-sensitive: false;
+    cycle:          true;
+    filter:         "";
+    scroll-method:  0;
     show-icons:     true;
-    terminal:       "rofi-sensible-terminal";
-    ssh-client:     "ssh";
-    ssh-command:    "{terminal} -e {ssh-client} {host} [-p {port}]";
+    icon-theme:     "Papirus";
+    steal-focus:    false;
+    
+    /*---------- Matching settings ----------*/
+    matching: "normal";
+    tokenize: true;
+
+    /*---------- SSH settings ----------*/
+    ssh-client:         "ssh";
+    ssh-command:        "{terminal} -e {ssh-client} {host} [-p {port}]";
+    parse-host:         true;
+    parse-know-hosts:   true;
+
+    /*---------- Drun settings ----------*/
+    drun-categories:        "";
+    drun-match-fields:      "name,generic,exec,categories,keywords";
+    drun-display-format:    "{icon} {name}";    
+    drun-show-actions:      false;
+    drun {
+        parse-user:     true;
+        parse-system:   true;
+    }
+
+    /*---------- Run settings ----------*/
     run-command:    "{cmd}";
     run-list-command: "";
     run-shell-command: "{terminal} -e {cmd}";
 
+    /*---------- Fallback Icon ----------*/
+    run, drun {
+        fallback-icon: "application-x-addon";
+    }
+
+    /*---------- Window switcher settings ----------*/
+	window-match-fields:    "title,class,role,name,desktop";
+	window-command:         "wmctrl -i -R {window}";
+	window-format:          "{w} - {c} - {t:0}";
+	window-thumbnail:       false;
+
+	/*---------- History and Sorting ----------*/
+	disable-history:    false;
+	sorting-method:     "normal";
+	max-history-size:   25;
+
+	/*---------- Display setting ----------*/
+    display-window:     " :";
+	display-windowcd:   "Window CD";
+    display-run:        " :";
+    display-ssh:        " :";
+    display-drun:       "󱚞 :";
+    display-combi:      " :";
+	display-keys:       " ";
+	display-filebrowser:"󱦞 ";
+
+	/*---------- Misc setting ----------*/
+	terminal:       "rofi-sensible-terminal";
+	font:           "JetBrainsMono Nerd Font Medium 11";
+	sort:           false;
+	threads:        2;
+	click-to-exit:  true;
+
+	/*---------- File browser setting ----------*/
+    filebrowser {
+        directory: "/home/none/";
+        directories-first: true;
+        sorting-method: "name";
+    }
 }
-
-
-@theme "~/.dotfiles/rofi/themes/tokyonight.rasi"
-
-
-// listview {
-//	lines: 6;
-//	columns: 2;
-//}
-
-//window {
-//	width: 40%;
-//}

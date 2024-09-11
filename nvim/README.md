@@ -29,3 +29,10 @@ fd
 # luarocks
 
 lua 5.1
+
+# icon picker (fonts)
+
+Nerd font (my case JetBrains Mono)
+noto-fonts-cjk
+noto-fonts-emoji
+noto-fonts

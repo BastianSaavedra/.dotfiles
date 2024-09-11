@@ -1,3 +1,4 @@
+
 /**
  * Nordic rofi theme
  * Adapted by undiabler <undiabler@gmail.com>
@@ -6,47 +7,45 @@
  *
  */
 
-
 * {
-	nord0: #2e3440;
-	nord1: #3b4252;
-	nord2: #434c5e;
-	nord3: #4c566a;
+    kanagawa0: #1f1f28; /* Base background */
+    kanagawa1: #2a2a37; /* Surface color */
+    kanagawa2: #223249; /* Line color */
+    kanagawa3: #2d4f67; /* Deep accent */
+    
+    kanagawa4: #dcd7ba; /* Foreground */
+    kanagawa5: #c8c093; /* Secondary text */
+    kanagawa6: #727169; /* Subtle text */
+    
+    kanagawa7: #7e9cd8; /* Blue accent */
+    kanagawa8: #957fb8; /* Purple accent */
+    kanagawa9: #c098a3; /* Red accent */
+    kanagawa10: #76946a; /* Green accent */
+    kanagawa11: #e46876; /* Pink accent */
+    
+    kanagawa12: #dca561; /* Yellow accent */
+    kanagawa13: #ffa066; /* Orange accent */
+    kanagawa14: #98bb6c; /* Light green */
+    kanagawa15: #938aa9; /* Soft purple */
 
-	nord4: #d8dee9;
-	nord5: #e5e9f0;
-	nord6: #eceff4;
-
-	nord7: #8fbcbb;
-	nord8: #88c0d0;
-	nord9: #81a1c1;
-	nord10: #5e81ac;
-	nord11: #bf616a;
-
-	nord12: #d08770;
-	nord13: #ebcb8b;
-	nord14: #a3be8c;
-	nord15: #b48ead;
-
-    foreground:  @nord9;
+    foreground:  @kanagawa9;
     backlight:   #ccffeedd;
     background-color:  transparent;
     
-    highlight:     underline bold #eceff4;
+    highlight:     underline bold #dcd7ba;
 
-    transparent: rgba(46,52,64,0);
+    transparent: rgba(31,31,40,0);
 }
-
 
 window {
     location: center;
     anchor:   center;
     transparency: "screenshot";
-    padding: 10px;
+    padding: 5px;
     border:  0px;
     border-radius: 6px;
 
-    background-color: @transparent;
+    background-color: @kanagawa4;
     spacing: 0;
     children:  [mainbox];
     orientation: horizontal;
@@ -59,21 +58,21 @@ mainbox {
 }
 
 message {
-    color: @nord0;
+    color: @kanagawa0;
     padding: 5;
     border-color: @foreground;
     border:  0px 2px 2px 2px;
-    background-color: @nord7;
+    background-color: @kanagawa7;
 }
 
 inputbar {
-    color: @nord6;
+    color: @kanagawa9;
     padding: 11px;
     background-color: #3b4252;
 
-    border: 1px;
+    border: 2px;
     border-radius:  6px 6px 0px 0px;
-    border-color: @nord10;
+    border-color: @kanagawa4;
 }
 
 entry, prompt, case-indicator {
@@ -88,8 +87,8 @@ prompt {
 listview {
     padding: 8px;
     border-radius: 0px 0px 6px 6px;
-    border-color: @nord10;
-    border: 0px 1px 1px 1px;
+    border-color: @kanagawa4;
+    border: 0px 2px 2px 2px;
     background-color: rgba(46,52,64,0.9);
     dynamic: false;
 	lines: 6;
@@ -106,7 +105,7 @@ element {
 }
 
 element selected.normal {
-	background-color: @nord7;
+	background-color: @kanagawa9;
 	text-color: #2e3440;
 }
 
