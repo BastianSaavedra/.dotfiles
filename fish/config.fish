@@ -39,20 +39,19 @@ set -gx EDITOR nvim
 
 
 
+# Created by `pipx` on 2024-08-28 23:23:31
+set PATH $PATH /home/bastcode/.local/bin
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-if test -f /home/none/anaconda3/bin/conda
-    eval /home/none/anaconda3/bin/conda "shell.fish" "hook" $argv | source
+if test -f /home/bastcode/anaconda3/bin/conda
+    eval /home/bastcode/anaconda3/bin/conda "shell.fish" "hook" $argv | source
 else
-    if test -f "/home/none/anaconda3/etc/fish/conf.d/conda.fish"
-        . "/home/none/anaconda3/etc/fish/conf.d/conda.fish"
+    if test -f "/home/bastcode/anaconda3/etc/fish/conf.d/conda.fish"
+        . "/home/bastcode/anaconda3/etc/fish/conf.d/conda.fish"
     else
-        set -x PATH "/home/none/anaconda3/bin" $PATH
+        set -x PATH "/home/bastcode/anaconda3/bin" $PATH
     end
 end
-conda deactivate
 # <<< conda initialize <<<
 
-
-# Created by `pipx` on 2024-08-28 23:23:31
-set PATH $PATH /home/none/.local/bin

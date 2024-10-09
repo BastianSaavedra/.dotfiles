@@ -26,7 +26,7 @@ return {
 				"bashls",
 				"eslint",
 				"jsonls",
-				"tsserver",
+				"ts_ls", -- old: tsserver
 				"html",
 				"cssls",
 				"tailwindcss",
